@@ -354,4 +354,13 @@
     {% else %}
     "ui": {{ consul_ui | bool | to_json }}
     {% endif %}
+    
+    {% if consul_dnsconfig_enable | bool -%}
+    dns_config {
+      service_ttl {
+        "*" = "15s"
+      }
+      node_ttl = "1m"
+    }
+    {% endif %}
 }
