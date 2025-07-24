@@ -346,6 +346,18 @@
     "limits": {{ consul_limits | default({})| to_json }},
     {% endif %}
 
+    {## DNS config ##}
+    {% if consul_dnsconfig_enable | bool -%}
+    "dns_config": {
+      "service_ttl": {
+        "*": "15s"
+      },
+      "node_ttl": "1m",
+      "allow_stale": true,
+      "max_stale": "5s"
+    },
+    {% endif %}
+    
     {## UI ##}
     {% if consul_version is version_compare('1.9.0', '>=') %}
     "ui_config": {
@@ -354,4 +366,5 @@
     {% else %}
     "ui": {{ consul_ui | bool | to_json }}
     {% endif %}
+
 }
