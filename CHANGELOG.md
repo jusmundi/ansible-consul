@@ -311,7 +311,7 @@
 
 - Add performance tuning configuration (thanks @t0k4rt)
  - Set raft multiplier to 1
-- Conditionally install Python dependency baed on virtualenv or --user
+- Conditionally install Python dependency based on virtualenv or --user
  Addresses https://github.com/brianshumate/ansible-consul/issues/129#issuecomment-356095611
 - Update includes to import_tasks and include_tasks
 - Remove invalid consul_version key from configuration
