@@ -364,11 +364,7 @@
     "telemetry": {
         "disable_hostname": {{ consul_telemetry_disable_hostname }},
         "enable_host_metrics": true,
-        "prometheus_retention_time": "{{ consul_telemetry_prometheus_retention_time }}",
-        "collection_interval": "15s",       
-        "prometheus_metrics": true,
-        "publish_allocation_metrics": true,
-        "publish_node_metrics": true
+        "prometheus_retention_time": "{{ consul_telemetry_prometheus_retention_time }}"
     },
     {% endif %}
 
