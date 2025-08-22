@@ -347,11 +347,28 @@
     "limits": {{ consul_limits | default({})| to_json }},
     {% endif %}
 
+    {## DNS config ##}
+    {% if consul_dnsconfig_enable | bool %}
+    "dns_config": {
+      "service_ttl": {
+        "*": "15s"
+      },
+      "node_ttl": "1m",
+      "allow_stale": true,
+      "max_stale": "5s"
+    },
+    {% endif %}
+
     {## Telemetry ##}
     {% if consul_telemetry_enable | bool %}
     "telemetry": {
+        "disable_hostname": {{ consul_telemetry_disable_hostname }},
+        "enable_host_metrics": true,
         "prometheus_retention_time": "{{ consul_telemetry_prometheus_retention_time }}",
-        "disable_hostname": {{ consul_telemetry_disable_hostname }}
+        "collection_interval": "15s",       
+        "prometheus_metrics": true,
+        "publish_allocation_metrics": true,
+        "publish_node_metrics": true
     },
     {% endif %}
 
@@ -363,4 +380,5 @@
     {% else %}
     "ui": {{ consul_ui | bool | to_json }}
     {% endif %}
+
 }
