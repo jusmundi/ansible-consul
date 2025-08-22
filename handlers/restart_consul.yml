@@ -1,10 +1,10 @@
 ---
-- name: Daemon reload systemd in case the binaries upgraded
-  ansible.builtin.systemd_service:
-    daemon_reload: true
-  become: true
-  when: ansible_service_mgr == "systemd"
-  listen: reload systemd daemon
+#- name: Daemon reload systemd in case the binaries upgraded
+#  ansible.builtin.systemd_service:
+#    daemon_reload: true
+#  become: true
+#  when: ansible_service_mgr == "systemd"
+#  listen: reload systemd daemon
 
 - name: Restart consul on Unix
   become: true

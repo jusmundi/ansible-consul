@@ -39,8 +39,8 @@
   ansible.builtin.import_tasks:
     file: start_snapshot.yml
 
-- name: Systemctl daemon-reload
-  ansible.builtin.systemd_service:
-    daemon_reload: true
-  become: true
-  listen: systemctl daemon-reload
+#- name: Systemctl daemon-reload
+#  ansible.builtin.systemd_service:
+#    daemon_reload: true
+#  become: true
+#  listen: systemctl daemon-reload
